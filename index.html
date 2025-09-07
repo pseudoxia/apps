@@ -57,6 +57,107 @@
             border-bottom-color: white;
         }
         
+        .install-guide {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .install-guide h2 {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .install-steps {
+            display: none;
+        }
+        
+        .install-steps.active {
+            display: block;
+        }
+        
+        .platform-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .platform-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .platform-btn.active {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .step {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 10px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .toggle-guide {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display: block;
+            text-align: center;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            width: 100%;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .toggle-guide:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+            background: linear-gradient(135deg, #7c8ce8 0%, #8b5fbf 100%);
+        }
+        
+        .toggle-guide:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
         .apps-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -132,40 +233,194 @@
     <img src="pseudoxia-banner.jpg" alt="Pseudoxia" class="header-banner">
     
     <div class="container">
-        <h1>Les apps gratuites Pseudoxia</h1>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h1 id="mainTitle">Les apps gratuites Pseudoxia</h1>
+            <button id="langToggle" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 12px; border-radius: 8px; font-size: 16px; cursor: pointer; transition: all 0.3s;">
+                🇫🇷
+            </button>
+        </div>
         <div class="website-link">
             <a href="https://www.pseudoxia.org" target="_blank">www.pseudoxia.org</a>
         </div>
+        
+        <div class="install-guide">
+            <button class="toggle-guide" id="toggleGuide">📱 Comment installer sur l'écran d'accueil ?</button>
+            <div id="guideContent" style="display: none;">
+                <h2 id="guideTitle">Guide d'installation</h2>
+                <div class="platform-selector">
+                    <button class="platform-btn active" data-platform="ios">iOS</button>
+                    <button class="platform-btn" data-platform="android">Android</button>
+                </div>
+                
+                <div class="install-steps active" id="ios-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div id="ios-step1">Ouvrez l'app avec Safari</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div id="ios-step2">Appuyez sur le bouton de partage (⬆️) en bas</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div id="ios-step3">Sélectionnez "Sur l'écran d'accueil"</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div id="ios-step4">Confirmez en appuyant sur "Ajouter"</div>
+                    </div>
+                </div>
+                
+                <div class="install-steps" id="android-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div id="android-step1">Ouvrez l'app avec Chrome</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div id="android-step2">Appuyez sur le menu (⋮) en haut à droite</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div id="android-step3">Sélectionnez "Ajouter à l'écran d'accueil"</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div id="android-step4">Confirmez en appuyant sur "Ajouter"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="apps-grid" id="appsContainer">
         </div>
     </div>
     
     <script>
-        const apps = [
-            {
-                name: "Respiration Guidée",
-                description: "Application de respiration contrôlée avec différents niveaux de difficulté",
-                icon: "vague/icon-192x192.png",
-                url: "vague/"
+        const translations = {
+            fr: {
+                title: "Les apps gratuites Pseudoxia",
+                toggleGuide: "📱 Comment installer sur l'écran d'accueil ?",
+                guideTitle: "Guide d'installation",
+                iosStep1: "Ouvrez l'app avec Safari",
+                iosStep2: "Appuyez sur le bouton de partage (⬆️) en bas",
+                iosStep3: "Sélectionnez \"Sur l'écran d'accueil\"",
+                iosStep4: "Confirmez en appuyant sur \"Ajouter\"",
+                androidStep1: "Ouvrez l'app avec Chrome",
+                androidStep2: "Appuyez sur le menu (⋮) en haut à droite",
+                androidStep3: "Sélectionnez \"Ajouter à l'écran d'accueil\"",
+                androidStep4: "Confirmez en appuyant sur \"Ajouter\"",
+                apps: [
+                    {
+                        name: "Respiration Guidée",
+                        description: "Application de respiration contrôlée avec différents niveaux de difficulté",
+                        icon: "vague/icon-192x192.png",
+                        url: "vague/"
+                    }
+                ]
+            },
+            en: {
+                title: "Pseudoxia Free Apps",
+                toggleGuide: "📱 How to install on home screen?",
+                guideTitle: "Installation Guide",
+                iosStep1: "Open the app with Safari",
+                iosStep2: "Tap the share button (⬆️) at the bottom",
+                iosStep3: "Select \"Add to Home Screen\"",
+                iosStep4: "Confirm by tapping \"Add\"",
+                androidStep1: "Open the app with Chrome",
+                androidStep2: "Tap the menu (⋮) at the top right",
+                androidStep3: "Select \"Add to Home Screen\"",
+                androidStep4: "Confirm by tapping \"Add\"",
+                apps: [
+                    {
+                        name: "Guided Breathing",
+                        description: "Controlled breathing application with different difficulty levels",
+                        icon: "vague/icon-192x192.png",
+                        url: "vague/"
+                    }
+                ]
             }
-        ];
+        };
         
+        // Détecter la langue du navigateur
+        let currentLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
+        
+        // Vérifier si une langue a été sauvegardée
+        const savedLang = localStorage.getItem('preferredLang');
+        if (savedLang) {
+            currentLang = savedLang;
+        }
+        
+        const langToggle = document.getElementById('langToggle');
+        const mainTitle = document.getElementById('mainTitle');
         const container = document.getElementById('appsContainer');
         
-        apps.forEach(app => {
-            const appCard = document.createElement('a');
-            appCard.href = app.url;
-            appCard.className = 'app-card';
+        function updateLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('preferredLang', lang);
+            langToggle.textContent = lang === 'fr' ? '🇫🇷' : '🇺🇸';
             
-            appCard.innerHTML = `
-                <img src="${app.icon}" alt="${app.name}" class="app-icon">
-                <div class="app-info">
-                    <div class="app-name">${app.name}</div>
-                    <div class="app-description">${app.description}</div>
-                </div>
-            `;
+            // Mettre à jour le titre
+            mainTitle.textContent = translations[lang].title;
             
-            container.appendChild(appCard);
+            // Mettre à jour le guide d'installation
+            document.getElementById('toggleGuide').textContent = translations[lang].toggleGuide;
+            document.getElementById('guideTitle').textContent = translations[lang].guideTitle;
+            document.getElementById('ios-step1').textContent = translations[lang].iosStep1;
+            document.getElementById('ios-step2').textContent = translations[lang].iosStep2;
+            document.getElementById('ios-step3').textContent = translations[lang].iosStep3;
+            document.getElementById('ios-step4').textContent = translations[lang].iosStep4;
+            document.getElementById('android-step1').textContent = translations[lang].androidStep1;
+            document.getElementById('android-step2').textContent = translations[lang].androidStep2;
+            document.getElementById('android-step3').textContent = translations[lang].androidStep3;
+            document.getElementById('android-step4').textContent = translations[lang].androidStep4;
+            
+            // Mettre à jour les apps
+            container.innerHTML = '';
+            translations[lang].apps.forEach(app => {
+                const appCard = document.createElement('a');
+                appCard.href = app.url;
+                appCard.className = 'app-card';
+                
+                appCard.innerHTML = `
+                    <img src="${app.icon}" alt="${app.name}" class="app-icon">
+                    <div class="app-info">
+                        <div class="app-name">${app.name}</div>
+                        <div class="app-description">${app.description}</div>
+                    </div>
+                `;
+                
+                container.appendChild(appCard);
+            });
+        }
+        
+        // Initialiser avec la langue détectée/sauvegardée
+        updateLanguage(currentLang);
+        
+        // Gérer le changement de langue
+        langToggle.addEventListener('click', () => {
+            const newLang = currentLang === 'fr' ? 'en' : 'fr';
+            updateLanguage(newLang);
+        });
+        
+        // Gérer l'affichage/masquage du guide
+        document.getElementById('toggleGuide').addEventListener('click', () => {
+            const guideContent = document.getElementById('guideContent');
+            guideContent.style.display = guideContent.style.display === 'none' ? 'block' : 'none';
+        });
+        
+        // Gérer les boutons de plateforme
+        document.querySelectorAll('.platform-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Désactiver tous les boutons
+                document.querySelectorAll('.platform-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.install-steps').forEach(s => s.classList.remove('active'));
+                
+                // Activer le bouton cliqué
+                btn.classList.add('active');
+                const platform = btn.dataset.platform;
+                document.getElementById(platform + '-steps').classList.add('active');
+            });
         });
     </script>
 </body>
