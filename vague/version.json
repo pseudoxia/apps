@@ -1,0 +1,10 @@
+{
+    "version": "2.0.0",
+    "releaseDate": "2024-01-07",
+    "features": [
+        "Système d'installation PWA amélioré",
+        "Support complet iOS et Android",
+        "Icônes optimisées pour toutes les plateformes"
+    ],
+    "critical": false
+}

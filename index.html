@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pseudoxia - Les apps gratuites</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 50%, #1a202c 100%);
+            min-height: 100vh;
+        }
+        
+        .header-banner {
+            width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .website-link {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .website-link a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+        }
+        
+        .website-link a:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+        
+        .apps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .app-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+        
+        .app-card:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .app-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+            margin-right: 20px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .app-info {
+            flex: 1;
+        }
+        
+        .app-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .app-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 380px) {
+            .app-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .app-name {
+                font-size: 16px;
+            }
+            
+            .app-description {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="pseudoxia-banner.jpg" alt="Pseudoxia" class="header-banner">
+    
+    <div class="container">
+        <h1>Les apps gratuites Pseudoxia</h1>
+        <div class="website-link">
+            <a href="https://www.pseudoxia.org" target="_blank">www.pseudoxia.org</a>
+        </div>
+        <div class="apps-grid" id="appsContainer">
+        </div>
+    </div>
+    
+    <script>
+        const apps = [
+            {
+                name: "Respiration Guidée",
+                description: "Application de respiration contrôlée avec différents niveaux de difficulté",
+                icon: "vague/icon-192x192.png",
+                url: "vague/"
+            }
+        ];
+        
+        const container = document.getElementById('appsContainer');
+        
+        apps.forEach(app => {
+            const appCard = document.createElement('a');
+            appCard.href = app.url;
+            appCard.className = 'app-card';
+            
+            appCard.innerHTML = `
+                <img src="${app.icon}" alt="${app.name}" class="app-icon">
+                <div class="app-info">
+                    <div class="app-name">${app.name}</div>
+                    <div class="app-description">${app.description}</div>
+                </div>
+            `;
+            
+            container.appendChild(appCard);
+        });
+    </script>
+</body>
+</html>
